@@ -21,5 +21,3 @@ flow.storage = GitHub(
     path="hello-flow.py"
 )
 
-flow.register(project_name="tutorial")
-
