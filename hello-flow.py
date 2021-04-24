@@ -13,5 +13,12 @@ with Flow("hello-flow") as flow:
     say_hello.map(people)
 
 # Register the flow under the "tutorial" project
+
+
+flow.storage = GitHub(
+    repo="piokra/prefect-tutorial",
+    path="hello-flow.py"
+)
+
 flow.register(project_name="tutorial")
 
