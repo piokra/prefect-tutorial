@@ -9,7 +9,7 @@ def say_hello(name):
 
 with Flow("hello-flow") as flow:
     # An optional parameter "people", with a default list of names
-    people = Parameter("people", default=["Arthur", "Ford", "Marvin"])
+    people = Parameter("people", default=["Arthur", "Ford", "Marvin", "Arti"])
     # Map `say_hello` across the list of names
     say_hello.map(people)
 
