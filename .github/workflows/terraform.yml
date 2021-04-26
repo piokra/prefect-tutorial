@@ -12,6 +12,8 @@ jobs:
     env:
       TF_VAR_hcloud_token: ${{ secrets.HCLOUD_TOKEN }}
       TF_VAR_prefect_runner_token: ${{ secrets.PREFECT_RUNNER_TOKEN }}
+      TF_VAR_ssh_private_key: ${{ secrets.SSH_PUB_KEY }}
+      TF_VAR_ssh_public_key: ${{ secrets.SSH_PRIV_KEY }}
     runs-on: ubuntu-latest
     environment: production
 

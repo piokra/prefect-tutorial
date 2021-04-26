@@ -24,10 +24,8 @@ variable "docker_version" {
 
 variable "ssh_private_key" {
   description = "Private Key to access the machines"
-  default     = "~/.ssh/id_rsa_terraform"
 }
 
 variable "ssh_public_key" {
   description = "Public Key to authorized the access for the machines"
-  default     = "~/.ssh/id_rsa_terraform.pub"
 }

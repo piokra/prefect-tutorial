@@ -13,7 +13,7 @@ provider "hcloud" {
 
 resource "hcloud_ssh_key" "agent_admin_ssh_key" {
   name       = "agent_admin_ssh_key-1"
-  public_key = file(var.ssh_public_key)
+  public_key = var.ssh_public_keys
 }
 
 resource "hcloud_server" "agent" {
@@ -26,7 +26,7 @@ resource "hcloud_server" "agent" {
   connection {
     host        = self.ipv4_address
     type        = "ssh"
-    private_key = file(var.ssh_private_key)
+    private_key = var.ssh_private_key
   }
 
   provisioner "file" {
