@@ -13,7 +13,7 @@ provider "hcloud" {
 
 resource "hcloud_ssh_key" "agent_admin_ssh_key" {
   name       = "agent_admin_ssh_key-1"
-  public_key = var.ssh_public_keys
+  public_key = var.ssh_public_key
 }
 
 resource "hcloud_server" "agent" {
