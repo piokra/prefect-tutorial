@@ -39,6 +39,7 @@ jobs:
         mkdir -p ~/.ssh/
         echo $SSH_PUB_KEY > ~/.ssh/id_rsa_terraform.pub
         echo $SSH_PRIV_KEY > ~/.ssh/id_rsa_terraform
+        ls -alh ~/.ssh
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
