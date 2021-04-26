@@ -53,6 +53,9 @@ on:
 jobs:
   terraform:
     name: 'Terraform'
+    env:
+      TF_VAR_hcloud_token: ${{ secrets.HCLOUD_TOKEN }}
+      TF_VAR_prefect_runner_token: ${{ secrets.PREFECT_RUNNER_TOKEN }}
     runs-on: ubuntu-latest
     environment: production
 
@@ -82,9 +85,6 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      env:
-        TF_VAR_hcloud_token = ${{ secrets.HCLOUD_TOKEN }}
-        TF_VAR_prefect_runner_token = ${{ secrets.PREFECT_RUNNER_TOKEN }}
       run: cd terraform && terraform plan
 
       # On push to master, build or change infrastructure according to Terraform configuration files
