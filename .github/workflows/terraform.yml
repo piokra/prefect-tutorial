@@ -33,8 +33,8 @@ jobs:
 
     - name: Init ssh keys
       env:
-        SSH_PUB_KEY: ${{ secrets.PUB_KEY }}
-        SSH_PRIV_KEY: ${{ secrets.PRIV_KEY }}
+        SSH_PUB_KEY: ${{ secrets.SSH_PUB_KEY }}
+        SSH_PRIV_KEY: ${{ secrets.SSH_PRIV_KEY }}
       run: |
         mkdir -p ~/.ssh/
         echo $SSH_PUB_KEY > ~/.ssh/id_rsa_terraform.pub
