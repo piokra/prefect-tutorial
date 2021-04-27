@@ -39,12 +39,12 @@ resource "hcloud_server" "agent" {
   }
 
   provisioner "file" {
-    source      = "files/Dockerfile"
+    source      = "terraform/files/Dockerfile"
     destination = "/root/Dockerfile"
   }
 
   provisioner "file" {
-    source      = "scripts/bootstrap.sh"
+    source      = "terraform/scripts/bootstrap.sh"
     destination = "/root/bootstrap.sh"
   }
 
