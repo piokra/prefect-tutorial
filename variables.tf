@@ -15,7 +15,7 @@ variable "node_type" {
 }
 
 variable "node_count" {
-  default = 1
+  default = 2
 }
 
 variable "docker_version" {
