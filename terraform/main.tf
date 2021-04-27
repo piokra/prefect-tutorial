@@ -5,6 +5,15 @@ terraform {
       version = "1.23.0"
     }
   }
+
+  backend "remote" {
+    organization = "piokra"
+
+    workspaces {
+      name = "prefect-tutorial"
+    }
+  }
+
 }
 
 provider "hcloud" {
