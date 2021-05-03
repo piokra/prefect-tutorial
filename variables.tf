@@ -4,6 +4,10 @@ variable "hcloud_token" {
 variable "prefect_runner_token" {
 }
 
+variable "av_token" {
+
+}
+
 variable "node_image" {
   description = "Predefined Image that will be used to spin up the machines (Currently supported: ubuntu-20.04, ubuntu-18.04)"
   default     = "ubuntu-20.04"
@@ -15,7 +19,7 @@ variable "node_type" {
 }
 
 variable "node_count" {
-  default = 2
+  default = 1
 }
 
 variable "docker_version" {

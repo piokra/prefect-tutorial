@@ -48,8 +48,13 @@ resource "hcloud_server" "agent" {
     destination = "/root/bootstrap.sh"
   }
 
+  provisioner "file" {
+    source      = "requirements.txt"
+    destination = "/root/requirements.txt"
+  }
+
   provisioner "remote-exec" {
-    inline = ["DOCKER_VERSION=${var.docker_version} TOKEN=${var.prefect_runner_token} bash /root/bootstrap.sh"]
+    inline = ["DOCKER_VERSION=${var.docker_version} TOKEN=${var.prefect_runner_token} AV_TOKEN=${var.av_token} bash /root/bootstrap.sh"]
   }
 }
 
