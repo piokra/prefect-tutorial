@@ -6,6 +6,7 @@ terraform {
     }
   }
 
+
   backend "remote" {
     organization = "piokra"
 
@@ -20,6 +21,10 @@ provider "hcloud" {
   token = var.hcloud_token
 }
 
+data "hcloud_network" "visibility_network" {
+  name = "network-1"
+}
+
 resource "hcloud_ssh_key" "agent_admin_ssh_key" {
   name       = "agent_admin_ssh_key-1"
   public_key = var.ssh_public_key
@@ -30,7 +35,8 @@ resource "hcloud_server" "agent" {
   name        = "node-${count.index + 1}"
   server_type = var.node_type
   image       = var.node_image
-  ssh_keys    = [hcloud_ssh_key.agent_admin_ssh_key.id]
+  ssh_keys = [
+  hcloud_ssh_key.agent_admin_ssh_key.id]
 
   connection {
     host        = self.ipv4_address
@@ -54,7 +60,14 @@ resource "hcloud_server" "agent" {
   }
 
   provisioner "remote-exec" {
-    inline = ["DOCKER_VERSION=${var.docker_version} TOKEN=${var.prefect_runner_token} AV_TOKEN=${var.av_token} bash /root/bootstrap.sh"]
+    inline = [
+    "DOCKER_VERSION=${var.docker_version} TOKEN=${var.prefect_runner_token} AV_TOKEN=${var.av_token} bash /root/bootstrap.sh"]
   }
 }
 
+resource "hcloud_server_network" "visibility_server_network" {
+  count      = var.node_count
+  server_id  = hcloud_server.agent.*.id[count.index]
+  network_id = data.hcloud_network.visibility_network.id
+  ip         = "10.0.1.1${hcloud_server.agent.*.id[count.index] + 1}"
+}
