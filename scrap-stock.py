@@ -7,11 +7,12 @@ from prefect.storage import GitHub
 from prefect.tasks.secrets import EnvVarSecret
 
 from alpha_vantage.timeseries import TimeSeries
+from prefect.utilities.tasks import unmapped
 
 
 @task
-def scrap_stock(stock: str):
-    key = EnvVarSecret("AV_TOKEN")
+def scrap_stock(stock: str, key: str):
+
 
     logger = prefect.context.get("logger")
     logger.info(f"Scrapping {stock}!")
@@ -25,8 +26,9 @@ def scrap_stock(stock: str):
 schedule = IntervalSchedule(interval=timedelta(hours=24))
 
 with Flow("scrap-stock", schedule) as flow:
+    key = EnvVarSecret("AV_TOKEN")
     stocks = Parameter("stocks", default=["GOOGL", "MSFT"])
-    scrap_stock.map(stocks)
+    scrap_stock.map(stocks, key=unmapped(key))
 
 flow.storage = GitHub(
     repo="piokra/prefect-tutorial",
