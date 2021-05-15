@@ -39,4 +39,4 @@ EOF
 systemctl restart docker.service
 
 docker build -t prefect-local /root/
-docker run -d --restart=always -e TOKEN=$TOKEN -e AV_TOKEN=$AV_TOKEN -t prefect-local
+docker run -d --restart=always -e VAULT_URL=$VAULT_VAULT_URL -e VAULT_TOKEN=$VAULT_TOKEN -e TOKEN=$TOKEN -t prefect-local

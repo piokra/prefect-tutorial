@@ -8,6 +8,11 @@ variable "av_token" {
 
 }
 
+variable "vault_url" {
+}
+variable "vault_token" {
+}
+
 variable "node_image" {
   description = "Predefined Image that will be used to spin up the machines (Currently supported: ubuntu-20.04, ubuntu-18.04)"
   default     = "ubuntu-20.04"

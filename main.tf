@@ -30,6 +30,7 @@ resource "hcloud_ssh_key" "agent_admin_ssh_key" {
   public_key = var.ssh_public_key
 }
 
+
 resource "hcloud_server" "agent" {
   count       = var.node_count
   name        = "node-${count.index + 1}"
@@ -61,7 +62,7 @@ resource "hcloud_server" "agent" {
 
   provisioner "remote-exec" {
     inline = [
-    "DOCKER_VERSION=${var.docker_version} TOKEN=${var.prefect_runner_token} AV_TOKEN=${var.av_token} bash /root/bootstrap.sh"]
+    "VAULT_URL=${var.vault_url} VAULT_TOKEN=${var.vault_token} DOCKER_VERSION=${var.docker_version} TOKEN=${var.prefect_runner_token} AV_TOKEN=${var.av_token} bash /root/bootstrap.sh"]
   }
 }
 
