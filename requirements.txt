@@ -2,4 +2,11 @@ prefect[github]==0.14.16
 prefect==0.14.16
 alpha-vantage==2.3.1
 influxdb==5.3.1
--r spryframework/requirements.txt
+
+# test deps
+pytest==6.2.4
+
+# spryframework deps
+injector==0.18.4
+hvac[parser]==0.10.11
+hvac==0.10.11

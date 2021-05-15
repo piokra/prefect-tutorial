@@ -1,4 +1,0 @@
-injector==0.18.4
-hvac[parser]==0.10.11
-hvac==0.10.11
-pytest==6.2.4
