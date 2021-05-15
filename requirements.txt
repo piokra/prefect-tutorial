@@ -1,3 +1,5 @@
 prefect[github]==0.14.16
 prefect==0.14.16
 alpha-vantage==2.3.1
+influxdb==5.3.1
+-r spryframework/requirements.txt

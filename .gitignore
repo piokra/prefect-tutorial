@@ -2,3 +2,4 @@ venv
 .idea
 *tfstate*
 .terraform*
+.pytest_cache
