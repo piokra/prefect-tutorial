@@ -67,7 +67,7 @@ resource "hcloud_server" "agent" {
 
   provisioner "remote-exec" {
     inline = [
-    "VAULT_URL=${var.vault_url} VAULT_TOKEN=${var.vault_token} DOCKER_VERSION=${var.docker_version} TOKEN=${var.prefect_runner_token} AV_TOKEN=${var.av_token} bash /root/bootstrap.sh"]
+    "VAULT_URL=${var.vault_url} VAULT_TOKEN=${var.vault_token} DOCKER_VERSION=${var.docker_version} TOKEN=${var.prefect_runner_token} bash /root/bootstrap.sh"]
   }
 }
 

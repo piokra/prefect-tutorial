@@ -4,9 +4,6 @@ variable "hcloud_token" {
 variable "prefect_runner_token" {
 }
 
-variable "av_token" {
-
-}
 
 variable "vault_url" {
 }
