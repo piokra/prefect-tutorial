@@ -70,5 +70,4 @@ resource "hcloud_server_network" "visibility_server_network" {
   count      = var.node_count
   server_id  = hcloud_server.agent.*.id[count.index]
   network_id = data.hcloud_network.visibility_network.id
-  ip         = "10.0.1.1${hcloud_server.agent.*.id[count.index] + 1}"
 }
