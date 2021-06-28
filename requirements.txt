@@ -2,11 +2,14 @@ prefect[github]==0.14.16
 prefect==0.14.16
 alpha-vantage==2.3.1
 influxdb==5.3.1
+pydantic==1.8.2
 
 # test deps
 pytest==6.2.4
+mockito==1.2.2
 
 # spryframework deps
 injector==0.18.4
 hvac[parser]==0.10.11
 hvac==0.10.11
+influxdb-client==1.17.0

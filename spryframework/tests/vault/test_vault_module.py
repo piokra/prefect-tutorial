@@ -1,22 +1,8 @@
 import pickle
 
-import pytest
 from injector import Injector
 
-from spryframework.vault.vault_module import VaultConfigurationModule, VaultModule
-
 from hvac import Client
-
-
-@pytest.fixture
-def injector_object() -> Injector:
-    injector = Injector([VaultConfigurationModule(), VaultModule()])
-    return injector
-
-
-@pytest.fixture
-def vault_client(injector_object) -> Client:
-    return injector_object.get(Client)
 
 
 def test_injector_injects_authed_vault_client(vault_client):
