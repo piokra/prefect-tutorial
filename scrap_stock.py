@@ -47,7 +47,7 @@ with Flow("scrap-stock", schedule) as flow:
     secrets = fetch_secret_task('common', 'kv', injector)
     stocks = Parameter("stocks", default=["GOOGL", "MSFT"])
     av_response = scrap_stock.map(stocks, secrets=unmapped(secrets))
-    persist_data_in_influx(av_response, secrets)
+    persist_data_in_influx(injector, av_response, secrets)
 
 flow.storage = GitHub(
     repo="piokra/prefect-tutorial",
