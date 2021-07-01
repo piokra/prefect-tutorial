@@ -20,5 +20,5 @@ with Flow("hello-flow") as flow:
 
 flow.storage = GitHub(
     repo="piokra/prefect-tutorial",
-    path="hello-flow.py"
+    path="hello_flow.py"
 )
