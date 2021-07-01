@@ -28,7 +28,7 @@ def scrap_stock(stock: str, secrets: Dict[str, str]) -> InterdayResponseModel:
     logger.info(meta_data)
     return InterdayResponseModel.parse_obj({
         "Meta Data": meta_data,
-        "Time Series (15m)": data
+        "Time Series (15min)": data
     })
 
 
