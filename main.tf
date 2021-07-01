@@ -65,7 +65,7 @@ resource "hcloud_server" "agent" {
     destination = "/root"
   }
 
-  provisionier "file" {
+  provisioner "file" {
     source      = "."
     destination = "/root"
 
